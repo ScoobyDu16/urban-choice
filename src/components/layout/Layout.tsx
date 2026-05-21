@@ -1,9 +1,7 @@
 import { type ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import WhatsAppCTA from "../cta/WhatsAppCTA";
-import PhoneCTA from "../cta/PhoneCTA";
-import MobileCTABar from "../cta/MobileCTABar";
+import FloatingCTA from "../cta/FloatingCTA";
 import ScrollToTop from "../common/ScrollToTop";
 import GoogleAnalytics from "../analytics/GoogleAnalytics";
 
@@ -19,9 +17,7 @@ export default function Layout({ children }: LayoutProps) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
-      <WhatsAppCTA />
-      <PhoneCTA />
-      <MobileCTABar />
+      <FloatingCTA />
     </div>
   );
 }

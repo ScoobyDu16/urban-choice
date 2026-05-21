@@ -54,7 +54,7 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-black to-gray-900 text-white py-20 md:py-32">
+      <section className="relative bg-linear-to-br from-black to-gray-900 text-white py-12 md:py-32">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,24 +62,31 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">{SITE_TAGLINE}</h1>
-            <p className="text-xl text-gray-300 mb-8">{company.description}</p>
-            <div className="flex flex-wrap gap-4">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-3 md:mb-6 leading-tight">
+              {SITE_TAGLINE}
+            </h1>
+            <p className="hidden sm:block text-base md:text-xl text-gray-300 mb-6 md:mb-8">
+              {company.description}
+            </p>
+            <p className="sm:hidden text-sm text-gray-400 mb-6">
+              Premium building materials supplier in Dubai — paint, sanitary, electrical &amp; more.
+            </p>
+            <div className="flex flex-wrap gap-3">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 md:px-8 md:py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2 text-sm md:text-base"
               >
-                Contact on WhatsApp
-                <ArrowRight size={20} />
+                WhatsApp Us
+                <ArrowRight size={16} className="md:w-5 md:h-5" />
               </a>
               <a
                 href={PHONE_URL}
-                className="bg-white hover:bg-gray-100 text-black px-8 py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2"
+                className="bg-white hover:bg-gray-100 text-black px-5 py-2.5 md:px-8 md:py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2 text-sm md:text-base"
               >
                 Call Now
-                <Phone size={20} />
+                <Phone size={16} className="md:w-5 md:h-5" />
               </a>
             </div>
           </motion.div>

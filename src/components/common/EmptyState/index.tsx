@@ -15,7 +15,7 @@ export default function EmptyState({
       {actionLabel && onAction && (
         <button
           onClick={onAction}
-          className="text-orange-500 hover:text-orange-600 font-medium transition-colors"
+          className="text-orange-500 hover:text-orange-600 font-medium transition-colors cursor-pointer"
         >
           {actionLabel}
         </button>
