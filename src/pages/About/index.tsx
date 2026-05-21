@@ -3,6 +3,7 @@ import { Award, Users, Target, Shield } from "lucide-react";
 import SEO from "../../components/seo/SEO";
 import { company } from "../../data/company";
 import { SITE_NAME, SITE_TAGLINE } from "../../constants";
+import { SEO_TITLES, SEO_DESCRIPTIONS, SEO_KEYWORDS } from "../../constants/seo";
 
 export default function About() {
   const values = [
@@ -46,9 +47,10 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Us"
-        description={`Learn more about ${SITE_NAME} - Your trusted building materials partner in Dubai. Years of experience, quality products, and exceptional service.`}
-        keywords="about us, building materials Dubai, construction materials supplier, company profile"
+        title={SEO_TITLES.ABOUT}
+        description={SEO_DESCRIPTIONS.ABOUT}
+        keywords={SEO_KEYWORDS.ABOUT}
+        pathname="/about"
       />
 
       {/* Hero Section */}

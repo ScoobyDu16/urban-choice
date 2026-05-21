@@ -1,18 +1,5 @@
-export interface Product {
-  id: string;
-  name: string;
-  image: string;
-  categorySlug: string;
-  brand?: string;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-  image: string;
-  description?: string;
-}
+export type { Product } from "./product.types";
+export type { Category } from "./category.types";
 
 export interface Company {
   name: string;

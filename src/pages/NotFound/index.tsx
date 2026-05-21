@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, ArrowLeft } from "lucide-react";
 import SEO from "../../components/seo/SEO";
-import { SITE_NAME } from "../../constants";
 
 export default function NotFound() {
   return (

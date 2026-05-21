@@ -1,4 +1,4 @@
-import { Category } from "../../types";
+import type { Category } from "../../types";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

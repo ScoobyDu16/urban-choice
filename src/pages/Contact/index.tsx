@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import SEO from "../../components/seo/SEO";
+import GoogleMap from "../../components/map/GoogleMap";
 import { company } from "../../data/company";
 import {
   CONTACT_NUMBER,
@@ -8,13 +9,12 @@ import {
   POSTAL_BOX,
   TELEPHONE,
   WORKING_HOURS,
-  GOOGLE_MAPS_EMBED_URL,
-  GOOGLE_MAPS_LINK,
   WHATSAPP_URL,
   PHONE_URL,
   EMAIL_URL,
-  SITE_NAME,
+  GOOGLE_MAPS_LINK,
 } from "../../constants";
+import { SEO_TITLES, SEO_DESCRIPTIONS, SEO_KEYWORDS } from "../../constants/seo";
 
 export default function Contact() {
   const contactInfo = [
@@ -53,9 +53,10 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact Us"
-        description={`Contact ${SITE_NAME} for all your building materials needs. Phone, WhatsApp, email, and visit our store in Dubai.`}
-        keywords="contact us, building materials Dubai, phone number, WhatsApp, address"
+        title={SEO_TITLES.CONTACT}
+        description={SEO_DESCRIPTIONS.CONTACT}
+        keywords={SEO_KEYWORDS.CONTACT}
+        pathname="/contact"
       />
 
       {/* Hero Section */}
@@ -180,28 +181,7 @@ export default function Contact() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Find Us</h2>
 
-            <div className="bg-white p-4 rounded-xl shadow-lg">
-              <iframe
-                src={GOOGLE_MAPS_EMBED_URL}
-                className="w-full h-96 rounded-lg"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-
-            <div className="mt-6 text-center">
-              <a
-                href={GOOGLE_MAPS_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 font-medium transition-colors"
-              >
-                <MapPin size={20} />
-                Open in Google Maps
-              </a>
-            </div>
+            <GoogleMap showLink />
           </motion.div>
         </div>
       </section>

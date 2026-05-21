@@ -1,4 +1,4 @@
-import { Category } from "../types";
+import type { Category } from "../types/category.types";
 
 export const categories: Category[] = [
   {
@@ -8,6 +8,7 @@ export const categories: Category[] = [
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     description: "Electrical items, switches, and lighting solutions",
+    featured: true,
   },
   {
     id: "2",
@@ -24,6 +25,7 @@ export const categories: Category[] = [
     image:
       "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800&q=80",
     description: "Premium quality paints for interior and exterior surfaces",
+    featured: true,
   },
   {
     id: "4",
@@ -40,6 +42,7 @@ export const categories: Category[] = [
     image:
       "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
     description: "Complete sanitary ware and bathroom fittings",
+    featured: true,
   },
   {
     id: "6",

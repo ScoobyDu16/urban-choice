@@ -1,4 +1,4 @@
-import { Product } from "../../types";
+import type { Product } from "../../types";
 import { motion } from "framer-motion";
 import { WHATSAPP_URL } from "../../constants";
 

@@ -1,47 +1,56 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-} from "lucide-react";
+import { ArrowRight, CheckCircle, Phone, Mail, MapPin } from "lucide-react";
 import SEO from "../../components/seo/SEO";
-import CategoryCard from "../../components/category/CategoryCard";
-import ProductCard from "../../components/product/ProductCard";
-import { categories } from "../../data/categories";
-import { products } from "../../data/products";
+import CategorySection from "../../components/category/CategorySection";
+import ProductSection from "../../components/product/ProductSection";
+import GoogleMap from "../../components/map/GoogleMap";
+import { useFeaturedCategories } from "../../hooks/useCategories";
+import { useFeaturedProducts } from "../../hooks/useProducts";
 import { company } from "../../data/company";
 import {
   SITE_NAME,
   SITE_TAGLINE,
-  SITE_DESCRIPTION,
-  GOOGLE_MAPS_EMBED_URL,
   WHATSAPP_URL,
   PHONE_URL,
 } from "../../constants";
+import { SEO_TITLES, SEO_DESCRIPTIONS, SEO_KEYWORDS } from "../../constants/seo";
+import { FEATURED_CATEGORIES_COUNT, FEATURED_PRODUCTS_COUNT } from "../../constants/config";
+import { buildLocalBusinessSchema } from "../../utils/seo";
+
+const whyChooseUs = [
+  "Premium Quality Products",
+  "Competitive Pricing",
+  "Wide Range of Brands",
+  "Expert Advice",
+  "Fast Delivery",
+  "Excellent Customer Service",
+];
 
 export default function Home() {
-  const featuredProducts = products.slice(0, 4);
-  const featuredCategories = categories.slice(0, 3);
+  const featuredCategories = useFeaturedCategories(FEATURED_CATEGORIES_COUNT);
+  const featuredProducts = useFeaturedProducts(FEATURED_PRODUCTS_COUNT);
 
-  const whyChooseUs = [
-    "Premium Quality Products",
-    "Competitive Pricing",
-    "Wide Range of Brands",
-    "Expert Advice",
-    "Fast Delivery",
-    "Excellent Customer Service",
-  ];
+  const structuredData = buildLocalBusinessSchema({
+    name: company.name,
+    description: company.description,
+    address: company.address,
+    city: company.city,
+    country: company.country,
+    phone: company.phone,
+    email: company.email,
+    googleMapsLink: company.googleMapsLink,
+    workingHours: company.workingHours,
+  });
 
   return (
     <>
       <SEO
-        title="Home"
-        description={SITE_DESCRIPTION}
-        keywords="building materials, paint shop, sanitary shop, electrical items, hardware materials, Dubai"
+        title={SEO_TITLES.HOME}
+        description={SEO_DESCRIPTIONS.HOME}
+        keywords={SEO_KEYWORDS.HOME}
+        pathname="/"
+        structuredData={structuredData}
       />
 
       {/* Hero Section */}
@@ -53,10 +62,8 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {SITE_TAGLINE}
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">{SITE_DESCRIPTION}</p>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">{SITE_TAGLINE}</h1>
+            <p className="text-xl text-gray-300 mb-8">{company.description}</p>
             <div className="flex flex-wrap gap-4">
               <a
                 href={WHATSAPP_URL}
@@ -80,95 +87,12 @@ export default function Home() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Browse Categories
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of building materials for all your
-              construction needs
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCategories.map((category: any, index: number) => (
-              <motion.div
-                key={category.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <CategoryCard category={category} />
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/categories"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-            >
-              View All Categories
-              <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CategorySection categories={featuredCategories} showViewAll />
 
       {/* Featured Products Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Featured Products
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover our most popular building materials from trusted brands
-            </p>
-          </motion.div>
+      <ProductSection products={featuredProducts} showViewAll />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product: any, index: number) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-            >
-              View All Products
-              <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About Short Section */}
+      {/* About Preview */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -193,7 +117,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -207,8 +131,7 @@ export default function Home() {
               Why Choose Us
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We are committed to providing the best building materials and
-              service
+              We are committed to providing the best building materials and service
             </p>
           </motion.div>
 
@@ -230,7 +153,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google Map Section */}
+      {/* Google Map */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -247,21 +170,13 @@ export default function Home() {
               Visit our store in Dubai or contact us for inquiries
             </p>
           </motion.div>
-
           <div className="max-w-4xl mx-auto">
-            <iframe
-              src={GOOGLE_MAPS_EMBED_URL}
-              className="w-full h-96 rounded-xl shadow-lg"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <GoogleMap showLink={false} />
           </div>
         </div>
       </section>
 
-      {/* Contact CTA Section */}
+      {/* CTA Section */}
       <section className="py-16 bg-black text-white">
         <div className="container mx-auto px-4">
           <motion.div

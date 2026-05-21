@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import type { Product } from "../types/product.types";
 
 export const products: Product[] = [
   // Paint Products
@@ -8,6 +8,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80",
     categorySlug: "paint",
     brand: "Asian Paints",
+    featured: true,
   },
   {
     id: "p2",
@@ -38,6 +39,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1584622650111-996317b8d101?w=600&q=80",
     categorySlug: "sanitary",
     brand: "Grohe",
+    featured: true,
   },
   {
     id: "p6",
@@ -68,6 +70,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     categorySlug: "electrical",
     brand: "Havells",
+    featured: true,
   },
   {
     id: "p10",
@@ -105,6 +108,7 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600&q=80",
     categorySlug: "hardware",
     brand: "DeWalt",
+    featured: true,
   },
   {
     id: "p15",
