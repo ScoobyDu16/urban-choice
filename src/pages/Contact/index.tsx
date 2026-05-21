@@ -60,17 +60,27 @@ export default function Contact() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-black to-gray-900 text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-[45vh] flex items-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1423592707957-3b212afa6733?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
+        <div className="relative container mx-auto px-4 py-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.7 }}
+            className="max-w-2xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl text-gray-300">
-              Get in touch with us for all your building materials needs
+            <span className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">
+              Contact Us
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5">
+              Get In Touch
+            </h1>
+            <p className="text-gray-300 text-lg">
+              We're here to help with all your building materials needs in Dubai.
             </p>
           </motion.div>
         </div>

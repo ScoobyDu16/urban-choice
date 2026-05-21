@@ -20,17 +20,19 @@ export default function ProductsPage() {
         pathname="/products"
       />
 
-      <section className="bg-gradient-to-br from-black to-gray-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">All Products</h1>
-            <p className="text-xl text-gray-300">
-              Browse our complete catalog of building materials
-            </p>
+      <section className="relative min-h-[42vh] flex items-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
+        <div className="relative container mx-auto px-4 py-20">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">
+              Catalog
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">All Products</h1>
+            <p className="text-gray-300 text-lg">Browse our complete catalog of building materials.</p>
           </motion.div>
         </div>
       </section>
